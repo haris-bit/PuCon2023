@@ -35,6 +35,7 @@ const Sample = () => {
 
   return (
     <>
+      <NavbarBootstrap />
       {/* <Navbar filterItem={filterItem} menuList={menuList} /> */}
       <MenuCard menuData={menuData} />
     </>
