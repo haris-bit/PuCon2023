@@ -2,15 +2,23 @@
 import React, { useEffect } from 'react'
 import TextField from "@mui/material/TextField";
 import { Alert, Button } from '@mui/material';
+
 import './Signup.css'
 import { useGetSignupMutation } from '../../redux/Api/allApi';
+import { useNavigate } from 'react-router';
 
 const Signup = () => {
 
-    const [getSignup, { data, error, isError, isLoading, isSuccess }] = useGetSignupMutation()
-    
+    // eslint-disable-next-line no-unused-vars
+    const [getSignup, { data, error, isError, isSuccess }] = useGetSignupMutation()
+
     // console.log(data)
     // console.log(error.data)
+    const navigate = useNavigate()
+
+    if (isSuccess) {
+        navigate('/login')
+    }
 
     const [formData, setFormData] = React.useState({
         name: "",
@@ -21,11 +29,23 @@ const Signup = () => {
     const [formError, setFormError] = React.useState('')
     const [msg, setMsg] = React.useState('')
 
-    useEffect(()=>{
-        if(error){
-           setMsg(error.data)
+    useEffect(() => {
+        if (error) {
+            setMsg(error.data)
         }
-    },[isError])
+    }, [isError])
+
+    const HandleSubmitForm = () => {
+
+        const { name: fullName, email, password } = formData
+
+
+        getSignup({
+            fullName,
+            email,
+            password
+        })
+    }
 
     const ValidateFrom = () => {
         if (formData.name === "") {
@@ -64,6 +84,7 @@ const Signup = () => {
         else {
             setFormError('')
             setMsg('')
+            HandleSubmitForm()
         }
     }
 
@@ -71,20 +92,9 @@ const Signup = () => {
     const handleFormData = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     }
-    const HandleSubmitForm = (e) => {
-        e.preventDefault();
-        const { name: fullName, email, password } = formData
 
-        if (msg === '' && formError === '') {
-            // console.log(formData)
-            getSignup({
-                fullName,
-                email,
-                password
-            })
-        }
 
-    }
+
     return (
         <div className="signupDiv">
             <h1>Signup</h1>
@@ -97,7 +107,7 @@ const Signup = () => {
                         name="name"
 
                         onChange={(e) => handleFormData(e)}
-                        onBlur={ValidateFrom}
+                        // onBlur={ValidateFrom}
                         variant="outlined"
                         style={{ width: "735px" }}
                         error={formError === 'name' ? true : false}
@@ -110,7 +120,7 @@ const Signup = () => {
                         name="email"
 
                         onChange={(e) => handleFormData(e)}
-                        onBlur={ValidateFrom}
+                        // onBlur={ValidateFrom}
                         variant="outlined"
                         style={{ width: "735px" }}
                         error={formError === 'email' ? true : false}
@@ -121,7 +131,7 @@ const Signup = () => {
                         name="password"
 
                         onChange={(e) => handleFormData(e)}
-                        onBlur={ValidateFrom}
+                        // onBlur={ValidateFrom}
                         variant="outlined"
                         style={{ width: "735px" }}
                         error={formError === 'password' ? true : false}
@@ -132,13 +142,13 @@ const Signup = () => {
                         name="cpassword"
 
                         onChange={(e) => handleFormData(e)}
-                        onBlur={ValidateFrom}
+                        // onBlur={ValidateFrom}
                         variant="outlined"
                         style={{ width: "735px" }}
                         error={formError === 'cpassword' ? true : false}
                     />
 
-                    <Button variant="contained" onClick={HandleSubmitForm}>SignUp</Button>
+                    <Button variant="contained" onClick={ValidateFrom}>SignUp</Button>
                 </div>
             </form>
         </div>

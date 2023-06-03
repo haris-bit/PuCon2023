@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react'
 import TextField from "@mui/material/TextField";
 import { Alert, Button } from '@mui/material';
@@ -8,6 +10,10 @@ const Login = () => {
     const [getLogin, { data, error, isError, isLoading, isSuccess }] = useGetLoginMutation()
 
     console.log(data)
+
+    if (isSuccess) { 
+        localStorage.setItem('token', data.token)
+    }
 
     const [formData, setFormData] = React.useState({
 

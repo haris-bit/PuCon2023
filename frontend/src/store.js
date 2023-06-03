@@ -4,6 +4,7 @@ import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
 import { combineReducers } from "@reduxjs/toolkit";
 import { allApi } from "./redux/Api/allApi";
+import userSlice from "./redux/reducer/userSlice";
 
 
 const persistConfig = {
@@ -13,7 +14,7 @@ const persistConfig = {
 };
 
 const reducer = combineReducers({
-    // [signupApi.reducerPath]: signupApi.reducer,
+    user: userSlice,
     [allApi.reducerPath]: allApi.reducer,
 });
 
