@@ -38,7 +38,7 @@ const Login = () => {
             setFormError("password")
             setMsg('Please Enter Your Password')
         }
-        else if (formData.password.length > 6 && formData.password.length < 20) {
+        else if (formData.password.length < 6 && formData.password.length > 20) {
 
             setFormError('password')
             setMsg('Password must be 6 to 20 characters')
@@ -58,10 +58,9 @@ const Login = () => {
         e.preventDefault();
 
 
-        if (msg === '' && formError === '') {
-            console.log(formData)
+       
             getLogin(formData)
-        }
+    
 
     }
     return (
