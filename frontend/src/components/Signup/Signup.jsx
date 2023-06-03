@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import TextField from "@mui/material/TextField";
 import { Alert, Button } from '@mui/material';
 import './Signup.css'
@@ -8,7 +8,8 @@ const Signup = () => {
 
     const [getSignup, { data, error, isError, isLoading, isSuccess }] = useGetSignupMutation()
     
-    console.log(data)
+    // console.log(data)
+    // console.log(error.data)
 
     const [formData, setFormData] = React.useState({
         name: "",
@@ -19,6 +20,11 @@ const Signup = () => {
     const [formError, setFormError] = React.useState('')
     const [msg, setMsg] = React.useState('')
 
+    useEffect(()=>{
+        if(error){
+           setMsg(error.data)
+        }
+    },[isError])
 
     const ValidateFrom = () => {
         if (formData.name === "") {
@@ -69,7 +75,7 @@ const Signup = () => {
         const { name: fullName, email, password } = formData
 
         if (msg === '' && formError === '') {
-            console.log(formData)
+            // console.log(formData)
             getSignup({
                 fullName,
                 email,
