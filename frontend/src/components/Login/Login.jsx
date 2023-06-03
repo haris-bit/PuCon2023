@@ -1,7 +1,7 @@
 import React from 'react'
 import TextField from "@mui/material/TextField";
 import { Alert, Button } from '@mui/material';
-import '../.Signup/Signup.css'
+import '../Signup/Signup.css'
 
 const Login = () => {
 
@@ -56,7 +56,7 @@ const Login = () => {
     }
     return (
         <div className="signupDiv">
-            <h1>Signup</h1>
+            <h1>LogIn</h1>
             {msg && <Alert variant="filled" severity="error">{msg}</Alert>}
             <form action="">
                 <div className="signupdata">
@@ -83,7 +83,7 @@ const Login = () => {
                         error={formError === 'password' ? true : false}
                     />
 
-                    <Button variant="contained" onClick={HandleSubmitForm}>SignUp</Button>
+                    <Button variant="contained" onClick={HandleSubmitForm}>LogIn</Button>
                 </div>
             </form>
         </div>

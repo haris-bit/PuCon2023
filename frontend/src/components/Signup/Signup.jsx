@@ -2,9 +2,13 @@ import React from 'react'
 import TextField from "@mui/material/TextField";
 import { Alert, Button } from '@mui/material';
 import './Signup.css'
+import { useGetSignupMutation } from '../../redux/Api/allApi';
 
 const Signup = () => {
 
+    const [getSignup, { data, error, isError, isLoading, isSuccess }] = useGetSignupMutation()
+    
+    console.log(data)
 
     const [formData, setFormData] = React.useState({
         name: "",
@@ -35,10 +39,10 @@ const Signup = () => {
             setFormError("password")
             setMsg('Please Enter Your Password')
         }
-        else if (formData.password.length > 6 && formData.password.length < 20) {
+        else if (formData.password.length < 8 && formData.password.length > 20) {
 
             setFormError('password')
-            setMsg('Password must be 6 to 20 characters')
+            setMsg('Password must be 8 to 20 characters')
 
         }
         else if (formData.cpassword === "") {
@@ -62,8 +66,15 @@ const Signup = () => {
     }
     const HandleSubmitForm = (e) => {
         e.preventDefault();
+        const { name: fullName, email, password } = formData
+
         if (msg === '' && formError === '') {
             console.log(formData)
+            getSignup({
+                fullName,
+                email,
+                password
+            })
         }
 
     }
