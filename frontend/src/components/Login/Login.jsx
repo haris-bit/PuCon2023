@@ -23,7 +23,8 @@ const Login = () => {
             setMsg(error.data)
         }
     }, [isError])
-    const ValidateFrom = () => {
+    const ValidateFrom = (e) => {
+
         if (formData.email === "") {
             setFormError('email')
             setMsg('Please Enter Your Email')
@@ -55,8 +56,8 @@ const Login = () => {
     const handleFormData = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     }
-    const HandleSubmitForm = (e) => {
-        e.preventDefault();
+    const HandleSubmitForm = () => {
+       
 
         getLogin(formData)
     }
