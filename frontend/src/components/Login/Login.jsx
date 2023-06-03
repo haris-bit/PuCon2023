@@ -47,6 +47,7 @@ const Login = () => {
         else {
             setFormError('')
             setMsg('')
+            HandleSubmitForm()
         }
     }
 
@@ -57,13 +58,10 @@ const Login = () => {
     const HandleSubmitForm = (e) => {
         e.preventDefault();
 
-
-        if (msg === '' && formError === '') {
-            console.log(formData)
-            getLogin(formData)
-        }
-
+        getLogin(formData)
     }
+
+    
     return (
         <div className="signupDiv">
             <h1>LogIn</h1>
@@ -76,7 +74,7 @@ const Login = () => {
                         name="email"
 
                         onChange={(e) => handleFormData(e)}
-                        onBlur={ValidateFrom}
+                        // onBlur={ValidateFrom}
                         variant="outlined"
                         style={{ width: "735px" }}
                         error={formError === 'email' ? true : false}
@@ -87,13 +85,13 @@ const Login = () => {
                         name="password"
 
                         onChange={(e) => handleFormData(e)}
-                        onBlur={ValidateFrom}
+                        // onBlur={ValidateFrom}
                         variant="outlined"
                         style={{ width: "735px" }}
                         error={formError === 'password' ? true : false}
                     />
 
-                    <Button variant="contained" onClick={HandleSubmitForm}>LogIn</Button>
+                    <Button variant="contained" onClick={ValidateFrom}>LogIn</Button>
                 </div>
             </form>
         </div>
