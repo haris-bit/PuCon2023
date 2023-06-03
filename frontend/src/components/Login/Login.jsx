@@ -79,6 +79,7 @@ const Login = () => {
                         id="outlined-basic"
                         label="Email"
                         name="email"
+                        type='email'
 
                         onChange={(e) => handleFormData(e)}
                         // onBlur={ValidateFrom}
@@ -90,7 +91,7 @@ const Login = () => {
                         id="outlined-basic"
                         label="Password"
                         name="password"
-
+                        type='password'
                         onChange={(e) => handleFormData(e)}
                         // onBlur={ValidateFrom}
                         variant="outlined"

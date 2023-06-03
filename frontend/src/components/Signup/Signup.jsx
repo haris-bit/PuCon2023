@@ -1,12 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react'
 import TextField from "@mui/material/TextField";
-import { Alert, Button } from '@mui/material';
-
 import './Signup.css'
 import { useGetSignupMutation } from '../../redux/Api/allApi';
 import { useNavigate } from 'react-router';
-
+import { Alert } from '@mui/material';
+import { Button } from '@mui/base';
 const Signup = () => {
 
     // eslint-disable-next-line no-unused-vars
@@ -93,7 +92,9 @@ const Signup = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     }
 
+   
 
+   
 
     return (
         <div className="signupDiv">
@@ -129,17 +130,19 @@ const Signup = () => {
                         id="outlined-basic"
                         label="Password"
                         name="password"
-
+                        type='password'
                         onChange={(e) => handleFormData(e)}
                         // onBlur={ValidateFrom}
                         variant="outlined"
                         style={{ width: "735px" }}
                         error={formError === 'password' ? true : false}
                     />
+                
                     <TextField
                         id="outlined-basic"
                         label="Confirm Password"
                         name="cpassword"
+                        type='password'
 
                         onChange={(e) => handleFormData(e)}
                         // onBlur={ValidateFrom}

@@ -1,17 +1,18 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 
 const NavbarBootstrap = (props) => {
   return (
     <nav
-      classNameName={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}
+      className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}
     >
-      <div classNameName="container-fluid">
-        <a classNameName="navbar-brand" href="/">
+      <div className="container-fluid">
+        <a className="navbar-brand" href="/">
           {props.title}
         </a>
 
         <button
-          classNameName="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"
@@ -19,14 +20,14 @@ const NavbarBootstrap = (props) => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span classNameName="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div classNameName="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul classNameName="navbar-nav me-auto mb-2 mb-lg-0">
-            <li classNameName="nav-item">
-              <a classNameName="nav-link active" aria-current="page" href="/">
-                {props.aboutText}
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <li className="nav-item">
+              <a className="nav-link active" aria-current="page" href="/">
+               Event Scheduler PUCon
               </a>
             </li>
             <li className="nav-item">
