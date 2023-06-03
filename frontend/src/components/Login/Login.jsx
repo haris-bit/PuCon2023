@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import TextField from "@mui/material/TextField";
 import { Alert, Button } from '@mui/material';
 import '../Signup/Signup.css'
+import { useGetLoginMutation } from '../../redux/Api/allApi';
 
 const Login = () => {
+    const [getLogin, { data, error, isError, isLoading, isSuccess }] = useGetLoginMutation()
 
+    console.log(data)
 
     const [formData, setFormData] = React.useState({
 
@@ -15,7 +18,11 @@ const Login = () => {
     const [formError, setFormError] = React.useState('')
     const [msg, setMsg] = React.useState('')
 
-
+    useEffect(() => {
+        if (error) {
+            setMsg(error.data)
+        }
+    }, [isError])
     const ValidateFrom = () => {
         if (formData.email === "") {
             setFormError('email')
@@ -49,8 +56,11 @@ const Login = () => {
     }
     const HandleSubmitForm = (e) => {
         e.preventDefault();
+
+
         if (msg === '' && formError === '') {
             console.log(formData)
+            getLogin(formData)
         }
 
     }

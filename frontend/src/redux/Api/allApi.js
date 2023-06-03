@@ -34,13 +34,10 @@ export const allApi = createApi({
 
         }),
 
-
-
-
         getLogin: builder.mutation({
             query: (body) => {
                 return {
-                    url: "api/v1/users/login",
+                    url: "/api/auth",
                     method: "POST",
                     body,
                 };
@@ -89,4 +86,4 @@ export const allApi = createApi({
     }),
 });
 
-export const { useGetSignupMutation } = allApi;
+export const { useGetSignupMutation, useGetLoginMutation } = allApi;
